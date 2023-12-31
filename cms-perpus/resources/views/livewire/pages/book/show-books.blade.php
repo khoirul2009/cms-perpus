@@ -1,4 +1,23 @@
 <div>
+    <div class="flex space-x-3 ">
+        <a class="btn btn-primary mb-5" href="/book/create" wire:navigate>
+            <i class="fa-solid fa-plus"></i>
+            <span>Add Book</span>
+        </a>
+        <a class="btn btn-accent mb-5" href="/download-book">
+            <i class="fa-solid fa-table"></i>
+            <span>Export to Excel</span>
+        </a>
+
+        <select wire:model.live="category" class=" select select-bordered w-full max-w-xs">
+            <option value="" selected>Any Category</option>
+            @foreach ($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->category }}</option>
+            @endforeach
+
+        </select>
+
+    </div>
     @if ($showToast)
         @if (session()->has('success'))
             <div class="toast toast-center ">
